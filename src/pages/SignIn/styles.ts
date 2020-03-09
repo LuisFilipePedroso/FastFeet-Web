@@ -45,13 +45,13 @@ export const InputWrapper = styled.div`
   display: flex;
   flex-direction: column;
   width: 100%;
-  height: 73px;
 
   label {
     color: #444444;
     font-size: 14px;
     text-transform: uppercase;
     font-weight: bold;
+    margin-bottom: 9px;
   }
 
   input {
@@ -59,11 +59,17 @@ export const InputWrapper = styled.div`
     height: 45px;
     border: 1px solid #dddddd;
     border-radius: 4px;
-    margin-top: 9px;
     margin-bottom: 15px;
     font-size: 16px;
     color: #999999;
     padding: 12px 15px 12px;
+  }
+
+  span {
+    color: #fb6f91;
+    align-self: flex-start;
+    margin: 0 0 10px;
+    font-weight: bold;
   }
 `;
 

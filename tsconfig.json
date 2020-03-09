@@ -22,9 +22,10 @@
     "baseUrl": "src"
   },
   "include": [
-    "src"
+    "src",
   ],
   "files": [
-    "node_modules/@types/react/index.d.ts"
+    "node_modules/@types/react/index.d.ts",
+    "src/@types/index.d.ts"
   ]
 }

@@ -4,6 +4,8 @@ import { Route, Redirect, RouteProps } from 'react-router-dom';
 import AuthLayout from 'pages/_layouts/auth';
 import DefaultLayout from 'pages/_layouts/default';
 
+import store from 'store';
+
 interface IProps extends RouteProps {
   isPrivate?: boolean;
 }
@@ -11,7 +13,7 @@ interface IProps extends RouteProps {
 export default function RouteWrapper(props: IProps) {
   const { component: Component, isPrivate, ...rest } = props;
 
-  const signed = false;
+  const { signed } = (store as any).getState().auth;
 
   if (!signed && isPrivate) {
     return <Redirect to="/" />;

@@ -6,6 +6,7 @@ export default function Input({ name, ...rest }) {
   const {
  fieldName, defaultValue = '', registerField, error 
 } = useField(name);
+
   useEffect(() => {
     registerField({
       name: fieldName,
@@ -13,5 +14,11 @@ export default function Input({ name, ...rest }) {
       path: 'value',
     });
   }, [fieldName, registerField]);
-  return <input ref={inputRef} defaultValue={defaultValue} {...rest} />;
+
+  return (
+    <>
+      <input ref={inputRef} defaultValue={defaultValue} {...rest} />
+      {error && <span className="error">{error}</span>}
+    </>
+  );
 }
