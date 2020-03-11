@@ -43,7 +43,9 @@ module.exports = {
     "@typescript-eslint/explicit-function-return-type": "off",
     "@typescript-eslint/interface-name-prefix": "off",
     "react/jsx-props-no-spreading": "off",
-    "object-curly-newline": "off"
+    "object-curly-newline": "off",
+    "class-methods-use-this": "off",
+    "@typescript-eslint/member-delimiter-style": "off"
   },
   settings: {
     'import/resolver': {

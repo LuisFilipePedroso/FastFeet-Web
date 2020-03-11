@@ -4,7 +4,7 @@ import { Route, Redirect, RouteProps } from 'react-router-dom';
 import AuthLayout from 'pages/_layouts/auth';
 import DefaultLayout from 'pages/_layouts/default';
 
-import store from 'store';
+import { store } from 'store';
 
 interface IProps extends RouteProps {
   isPrivate?: boolean;
@@ -28,7 +28,7 @@ export default function RouteWrapper(props: IProps) {
   return (
     <Route
       {...rest}
-      render={(props) => (
+      render={props => (
         <Layout>
           <Component {...props} />
         </Layout>

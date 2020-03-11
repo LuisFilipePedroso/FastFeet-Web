@@ -1,5 +1,7 @@
 import React from 'react';
 
+import Header from 'components/Header';
+
 import { Wrapper } from './styles';
 
 interface IProps {
@@ -9,5 +11,10 @@ interface IProps {
 export default function DefaultLayout(props: IProps) {
   const { children } = props;
 
-  return <Wrapper>{children}</Wrapper>;
+  return (
+    <Wrapper>
+      <Header />
+      {children}
+    </Wrapper>
+  );
 }

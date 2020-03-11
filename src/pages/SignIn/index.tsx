@@ -1,6 +1,6 @@
 import React, { useRef } from 'react';
 
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 
 import { signInRequest } from 'store/modules/auth/actions';
 
@@ -32,6 +32,7 @@ export default function SignIn() {
   const formRef = useRef(null);
 
   const dispatch = useDispatch();
+  const loading = useSelector((state) => state.auth.loading);
 
   async function handleSubmit(data, { reset }) {
     try {
@@ -46,7 +47,7 @@ export default function SignIn() {
     } catch (err) {
       const validationErrors = {};
       if (err instanceof Yup.ValidationError) {
-        err.inner.forEach((error) => {
+        err.inner.forEach(error => {
           validationErrors[error.path] = error.message;
         });
         formRef.current.setErrors(validationErrors);
@@ -71,7 +72,9 @@ export default function SignIn() {
               <Input type="password" name="password" id="password" />
             </InputWrapper>
 
-            <SubmitButton>Entrar no sistema</SubmitButton>
+            <SubmitButton>
+              {loading ? 'Carregando...' : 'Entrar no sistema'}
+            </SubmitButton>
           </Form>
         </CardBody>
       </Card>
