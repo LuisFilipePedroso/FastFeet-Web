@@ -13,6 +13,7 @@ import history from 'services/history';
 import api from 'services/api';
 
 import { toast } from 'react-toastify';
+import DeliveryRepository from 'repositories/Delivery';
 
 import Modal from '../../View';
 
@@ -40,7 +41,7 @@ function ListItem({ delivery, reload }: IProps) {
 
   async function handleConfirm() {
     try {
-      await api.delete(`/delivery/${delivery.id}`);
+      await DeliveryRepository.delete(delivery.id);
       toast.success('Encomenda deletada com sucesso!');
       reload();
     } catch (e) {

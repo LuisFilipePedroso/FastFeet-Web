@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { Link } from 'react-router-dom';
 
 export const Container = styled.div`
   display: grid;
@@ -9,10 +10,11 @@ export const Container = styled.div`
   border: 1px solid #dddddd;
 `;
 
-export const LogoContainer = styled.div`
+export const LogoContainer = styled(Link)`
   display: flex;
   justify-content: space-around;
   align-items: center;
+  text-decoration: none;
 
   > div {
     width: 2px;
@@ -47,15 +49,20 @@ export const ProfileContainer = styled.div`
   justify-content: center;
   align-items: center;
 
-  h4 {
+  > h4 {
     color: #666666;
     font-size: 14px;
   }
 
-  p {
-    color: #de3b3b;
-    font-weight: 500;
-    font-size: 14px;
-    margin-top: 5px;
+  > button {
+    border: none;
+    background: none;
+
+    p {
+      color: #de3b3b;
+      font-weight: 500;
+      font-size: 14px;
+      margin-top: 5px;
+    }
   }
 `;

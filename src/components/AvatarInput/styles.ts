@@ -9,6 +9,17 @@ export const Container = styled.div`
   label {
     cursor: pointer;
 
+    > div {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+
+      h3 {
+        font-size: 16px;
+        color: #dddddd;
+      }
+    }
+
     &:hover {
       opacity: 0.7;
     }

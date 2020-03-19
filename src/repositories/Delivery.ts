@@ -2,26 +2,25 @@ import api from 'services/api';
 
 import IDelivery from 'interfaces/Delivery';
 
-interface IParams {
-  recipient_id: number;
-  deliveryman_id: number;
-  product: string;
-}
-
 class DeliveryRepository {
   async findAll(filter = ''): Promise<IDelivery[]> {
     const response = await api.get(`/delivery?product=${filter}`);
     return response.data;
   }
 
-  async create(data: IParams): Promise<IDelivery> {
+  async create(data: IDelivery): Promise<IDelivery> {
     const response = await api.post('/delivery', data);
     return response.data;
   }
 
-  async update(data: IParams, id: number): Promise<IDelivery> {
+  async update(data: IDelivery, id: number): Promise<IDelivery> {
     const response = await api.put(`/delivery/${id}`, data);
     return response.data;
+  }
+
+  async delete(id: number): Promise<number> {
+    const response = await api.delete(`/delivery/${id}`);
+    return response.status;
   }
 }
 

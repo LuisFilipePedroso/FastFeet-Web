@@ -2,6 +2,7 @@ import React, { useState, useRef, useEffect } from 'react';
 import { useField } from '@unform/core';
 import api from 'services/api';
 
+import { MdInsertPhoto } from 'react-icons/md';
 import { Container } from './styles';
 
 export default function AvatarInput({
@@ -13,9 +14,13 @@ export default function AvatarInput({
   const { fieldName, defaultValue, registerField, error } = useField(name);
 
   const [file, setFile] = useState(defaultValue && defaultValue.id);
-  const [preview, setPreview] = useState(defaultValue && defaultValue.url);
+  const [preview, setPreview] = useState('');
 
   const ref = useRef();
+
+  useEffect(() => {
+    setPreview(defaultValue?.url);
+  }, [defaultValue]);
 
   useEffect(() => {
     if (ref.current) {
@@ -43,12 +48,14 @@ export default function AvatarInput({
   return (
     <Container>
       <label htmlFor="avatar" className={className}>
-        <img
-          src={
-            preview || 'https://api.adorable.io/avatars/50/abott@adorable.png'
-          }
-          alt=""
-        />
+        {preview ? (
+          <img src={preview} alt="" />
+        ) : (
+          <div>
+            <MdInsertPhoto color="#DDDDDD" size={38} />
+            <h3>Adicionar foto</h3>
+          </div>
+        )}
 
         <input
           type="file"
@@ -59,6 +66,8 @@ export default function AvatarInput({
           ref={ref}
         />
       </label>
+
+      {error && <span style={{ color: '#f00' }}>{error}</span>}
     </Container>
   );
 }

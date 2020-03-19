@@ -39,7 +39,7 @@ export default function DeliveryForm() {
   useEffect(() => {
     async function fetchRecipients() {
       const response = await api.get('/recipient');
-      const recipientsOptions = response.data.map((recipient) => ({
+      const recipientsOptions = response.data.map(recipient => ({
         value: recipient.id,
         label: recipient.name,
       }));
@@ -48,7 +48,7 @@ export default function DeliveryForm() {
 
     async function fetchDeliveryMan() {
       const response = await api.get('/deliveryman');
-      const deliverymanOptions = response.data.map((deliveryMan) => ({
+      const deliverymanOptions = response.data.map(deliveryMan => ({
         value: deliveryMan.id,
         label: deliveryMan.name,
       }));
@@ -80,17 +80,17 @@ export default function DeliveryForm() {
 
       if (id) {
         await DeliveryRepository.update(data, Number(id));
+        toast.success('Encomenda atualizada com sucesso!');
       } else {
         await DeliveryRepository.create(data);
+        toast.success('Encomenda cadastrada com sucesso!');
       }
-
-      toast.success('Encomenda cadastrada com sucesso!');
 
       history.push('/deliveries');
     } catch (err) {
       const validationErrors = {};
       if (err instanceof Yup.ValidationError) {
-        err.inner.forEach(error => {
+        err.inner.forEach((error) => {
           validationErrors[error.path] = error.message;
         });
         formRef.current.setErrors(validationErrors);
@@ -101,7 +101,10 @@ export default function DeliveryForm() {
   return (
     <Container>
       <Form ref={formRef} onSubmit={handleSubmit} initialData={model}>
-        <FormHeader title="Cadastro de encomendas" handleBack={handleBack} />
+        <FormHeader
+          title={id ? 'Edição de encomendas' : 'Cadastro de encomendas'}
+          handleBack={handleBack}
+        />
         <FormCard>
           <GridContainer>
             <Grid width="49%">

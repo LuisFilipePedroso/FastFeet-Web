@@ -8,7 +8,7 @@ interface IProps {
   onClick: () => any;
 }
 
-export default function ViewButton({ onClick }: IProps) {
+export default function EditButton({ onClick }: IProps) {
   return (
     <Container onClick={onClick}>
       <MdEdit color="#4D85EE" size={20} />

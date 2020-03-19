@@ -10,9 +10,14 @@ import {
 interface IProps {
   onClose: () => void;
   onConfirm: () => void;
+  infoMessage?: string;
 }
 
-export default function ConfirmAlert({ onClose, onConfirm }: IProps) {
+export default function ConfirmAlert({
+  onClose,
+  onConfirm,
+  infoMessage = 'Deseja deletar este item?',
+}: IProps) {
   function handleConfirm() {
     onConfirm();
     onClose();
@@ -21,7 +26,7 @@ export default function ConfirmAlert({ onClose, onConfirm }: IProps) {
   return (
     <Container>
       <h1>Tem certeza?</h1>
-      <p>Deseja deletar este item?</p>
+      <p>{infoMessage}</p>
 
       <ButtonsWrapper>
         <CancelButton onClick={onClose}>Não</CancelButton>

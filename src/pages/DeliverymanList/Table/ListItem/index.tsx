@@ -1,4 +1,4 @@
-import React, { useState, memo } from 'react';
+import React, { memo } from 'react';
 
 import IDeliveryMan from 'interfaces/DeliveryMan';
 
@@ -7,6 +7,7 @@ import EditButton from 'components/EditButton';
 import DeleteButton from 'components/DeleteButton';
 import ConfirmAlert from 'components/ConfirmAlert';
 import { confirmAlert } from 'react-confirm-alert';
+import DeliveryManRepository from 'repositories/DeliveryMan';
 
 import history from 'services/history';
 import api from 'services/api';
@@ -27,7 +28,7 @@ function ListItem({ deliveryMan, reload }: IProps) {
 
   async function handleConfirm() {
     try {
-      await api.delete(`/deliveryman/${deliveryMan.id}`);
+      await DeliveryManRepository.delete(deliveryMan.id);
       toast.success('Encomenda deletada com sucesso!');
       reload();
     } catch (e) {

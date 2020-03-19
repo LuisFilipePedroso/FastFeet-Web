@@ -14,7 +14,7 @@ export default function FormHeader({ title, handleBack }: IProps) {
       <h2>{title}</h2>
 
       <ButtonsWrapper>
-        <BackButton onClick={handleBack}>
+        <BackButton type="button" onClick={handleBack}>
           <MdChevronLeft size={24} color="#fff" />
           Voltar
         </BackButton>

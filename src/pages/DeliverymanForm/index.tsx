@@ -42,11 +42,17 @@ export default function DeliveryManForm() {
       // Remove all previous errors
       formRef.current.setErrors({});
 
+      data = {
+        ...data,
+        avatar_id: data.avatar,
+      };
+
       const schema = Yup.object().shape({
         name: Yup.string().required(),
         email: Yup.string()
           .email()
           .required(),
+        avatar_id: Yup.number().required(),
       });
 
       await schema.validate(data, {
@@ -55,17 +61,17 @@ export default function DeliveryManForm() {
 
       if (id) {
         await DeliveryManRepository.update(data, Number(id));
+        toast.success('Entregador atualizado com sucesso!');
       } else {
         await DeliveryManRepository.create(data);
+        toast.success('Entregador cadastrado com sucesso!');
       }
-
-      toast.success('Encomenda cadastrada com sucesso!');
 
       history.push('/deliverymans');
     } catch (err) {
       const validationErrors = {};
       if (err instanceof Yup.ValidationError) {
-        err.inner.forEach((error) => {
+        err.inner.forEach(error => {
           validationErrors[error.path] = error.message;
         });
         formRef.current.setErrors(validationErrors);
@@ -76,9 +82,12 @@ export default function DeliveryManForm() {
   return (
     <Container>
       <Form ref={formRef} onSubmit={handleSubmit} initialData={model}>
-        <FormHeader title="Cadastro de entregadores" handleBack={handleBack} />
+        <FormHeader
+          title={id ? 'Edição de entregadores' : 'Cadastro de entregadores'}
+          handleBack={handleBack}
+        />
         <FormCard>
-          <AvatarInput name="avatar_id" className="avatar" />
+          <AvatarInput name="avatar" className="avatar" />
           <Input name="name" label="Nome" />
           <Input name="email" label="Email" />
         </FormCard>

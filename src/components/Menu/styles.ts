@@ -24,9 +24,8 @@ export const ActionMenu = styled('ul')<{ open: string }>`
 
   ${props => props.open === 'true'
     && css`
+      min-width: 120px;
       flex-direction: column;
-      width: 150px;
-      height: 120px;
       background-color: #fff;
       box-shadow: 0px 0px 2px #00000026;
       position: absolute;

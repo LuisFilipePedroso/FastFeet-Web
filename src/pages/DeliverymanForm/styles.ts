@@ -28,7 +28,7 @@ export const Container = styled.div`
     .avatar {
       width: 150px;
       height: 150px;
-      border: 1px dashed #333;
+      border: 1px dashed #dddddd;
       border-radius: 50%;
       display: flex;
       align-items: center;

@@ -35,7 +35,7 @@ export default function DeliveryList() {
       ) : (
         <>
           <TableHeader
-            title="encomendas"
+            title="Gerenciando encomendas"
             path="/delivery"
             value={value}
             handleChange={handleChange}

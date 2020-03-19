@@ -9,7 +9,7 @@ interface Status {
 }
 
 export default interface IDelivery {
-  id: number;
+  id?: number;
   recipient_id: number;
   deliveryman_id: number;
   signature_id?: number;
@@ -17,10 +17,10 @@ export default interface IDelivery {
   canceled_at?: Date;
   start_date?: Date;
   end_date?: Date;
-  created_at: Date;
-  updated_at: Date;
-  recipient: Recipient;
-  deliveryman: DeliveryMan;
-  signature: File;
+  created_at?: Date;
+  updated_at?: Date;
+  recipient?: Recipient;
+  deliveryman?: DeliveryMan;
+  signature?: File;
   status?: Status;
 };

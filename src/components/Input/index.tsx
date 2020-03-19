@@ -20,7 +20,7 @@ export default function Input({ name, label = '', ...rest }) {
         defaultValue={defaultValue}
         {...rest}
       />
-      {error && <span className="error">{error}</span>}
+      {error && <span style={{ color: '#f00' }}>{error}</span>}
     </>
   );
 }

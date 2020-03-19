@@ -1,12 +1,11 @@
 export default interface IRecipient {
-  id: number;
+  id?: number;
   name: string;
   street: string;
   number: number;
-  address: string;
+  complement: string;
   state: string;
   city: string;
+  address?: string;
   postal_code: string;
-  created_at?: Date;
-  updated_at?: Date;
-};
+}

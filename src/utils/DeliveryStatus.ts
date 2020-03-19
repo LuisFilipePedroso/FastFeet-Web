@@ -5,11 +5,20 @@ interface IParams {
 }
 
 export default function({ startDate, endDate, canceledAt }: IParams) {
+  console.log(canceledAt);
   if (startDate !== null && endDate !== null) {
     return {
       title: 'Entregue',
       backgroundLight: '#DFF0DF',
       backgroundDark: '#2CA42B',
+    };
+  }
+
+  if (canceledAt !== null) {
+    return {
+      title: 'Cancelada',
+      backgroundLight: '#FAB0B0',
+      backgroundDark: '#DE3B3B',
     };
   }
 
@@ -26,14 +35,6 @@ export default function({ startDate, endDate, canceledAt }: IParams) {
       title: 'Retirada',
       backgroundLight: '#BAD2FF',
       backgroundDark: '#4D85EE',
-    };
-  }
-
-  if (canceledAt !== null) {
-    return {
-      title: 'Cancelada',
-      backgroundLight: '#FAB0B0',
-      backgroundDark: '#DE3B3B',
     };
   }
 }

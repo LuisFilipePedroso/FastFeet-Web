@@ -35,7 +35,7 @@ export default function DeliverymanList() {
       ) : (
         <>
           <TableHeader
-            title="entregadores"
+            title="Gerenciando entregadores"
             path="/deliveryman"
             value={value}
             handleChange={handleChange}
