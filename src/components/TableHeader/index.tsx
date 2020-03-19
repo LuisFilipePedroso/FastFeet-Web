@@ -1,13 +1,17 @@
 import React, { memo } from 'react';
 
 import { MdSearch, MdAdd } from 'react-icons/md';
-import { Container, InputWrapper, Grid } from './styles';
+import { DebounceInput } from 'react-debounce-input';
+import { Container, InputWrapper, Grid, Button } from './styles';
 
 interface IProps {
   title: string;
+  path: string;
+  value: string;
+  handleChange: ({ target: any }) => void;
 }
 
-function TableHeader({ title }: IProps) {
+function TableHeader({ title, path, value, handleChange }: IProps) {
   return (
     <Container>
       <h3>Gerenciando {title}</h3>
@@ -15,13 +19,19 @@ function TableHeader({ title }: IProps) {
       <Grid>
         <InputWrapper>
           <MdSearch color="#999999" size={20} />
-          <input name="search" placeholder={`Buscar por ${title}`} />
+          <DebounceInput
+            minLength={2}
+            debounceTimeout={500}
+            value={value}
+            onChange={handleChange}
+            placeholder={`Buscar por ${title}`}
+          />
         </InputWrapper>
 
-        <button type="button">
+        <Button to={path} type="button">
           <MdAdd color="#fff" size={22} />
           Cadastrar
-        </button>
+        </Button>
       </Grid>
     </Container>
   );

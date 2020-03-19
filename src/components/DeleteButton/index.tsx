@@ -4,9 +4,13 @@ import { MdDeleteForever } from 'react-icons/md';
 
 import { Container } from './styles';
 
-export default function ViewButton() {
+interface IProps {
+  onClick: () => any;
+}
+
+export default function ViewButton({ onClick }: IProps) {
   return (
-    <Container>
+    <Container onClick={onClick}>
       <MdDeleteForever color="#4D85EE" size={20} />
       Excluir
     </Container>

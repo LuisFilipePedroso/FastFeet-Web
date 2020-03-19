@@ -9,31 +9,33 @@ import { Container, DeliveryTable, TableHeader } from './styles';
 
 interface IProps {
   data: IDelivery[];
+  reload: () => void;
 }
 
-function Table({ data }: IProps) {
+function Table({ data, reload }: IProps) {
   const deliveries = useMemo(
-    () => data.map(delivery => {
-        const status = Status({
-          startDate: delivery.start_date,
-          endDate: delivery.end_date,
-          canceledAt: delivery.canceled_at,
-        });
+    () =>
+      data.map((delivery) => {
+      const status = Status({
+        startDate: delivery.start_date,
+        endDate: delivery.end_date,
+        canceledAt: delivery.canceled_at,
+      });
 
-        const acronymName = delivery.deliveryman.name
-          .split(/\s/)
-          .reduce((response, word) => (response += word.slice(0, 1)), '');
+      const acronymName = delivery.deliveryman.name
+        .split(/\s/)
+        .reduce((response, word) => (response += word.slice(0, 1)), '');
 
-        return {
-          ...delivery,
-          deliveryman: {
-            ...delivery.deliveryman,
-            acronymName: acronymName.replace(/[^A-Z]/g, ''),
-          },
-          status,
-        };
-      }),
-    [data]
+      return {
+        ...delivery,
+        deliveryman: {
+          ...delivery.deliveryman,
+          acronymName: acronymName.replace(/[^A-Z]/g, ''),
+        },
+        status,
+      };
+    }),
+    [data],
   );
 
   return (
@@ -51,8 +53,8 @@ function Table({ data }: IProps) {
           </tr>
         </thead>
         <tbody>
-          {deliveries.map((delivery) => (
-            <ListItem key={delivery.id} delivery={delivery} />
+          {deliveries.map(delivery => (
+            <ListItem key={delivery.id} delivery={delivery} reload={reload} />
           ))}
         </tbody>
       </DeliveryTable>

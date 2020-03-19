@@ -1,6 +1,7 @@
 import { createGlobalStyle } from 'styled-components';
 
 import 'react-toastify/dist/ReactToastify.css';
+import 'react-confirm-alert/src/react-confirm-alert.css';
 
 export default createGlobalStyle`
   @import url('https://fonts.googleapis.com/css?family=Roboto&display=swap');
@@ -36,7 +37,14 @@ export default createGlobalStyle`
     list-style: none;
   }
 
-  button {
-    cursor: pointer;
+  button, a {
+    
+    &:hover {
+      cursor: pointer;
+    }
+  }
+
+  .react-confirm-alert-overlay {
+    background: rgba(25, 25, 25, 0.9) !important;
   }
 `;

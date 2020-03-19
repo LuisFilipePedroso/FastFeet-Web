@@ -8,19 +8,25 @@ import { AiOutlineLoading } from 'react-icons/ai';
 import Table from './Table';
 import { Container } from './styles';
 
-export default function Delivery() {
+export default function DeliveryList() {
   const [deliveries, setDeliveries] = useState<IDelivery[]>();
   const [loading, setLoading] = useState(true);
+  const [value, setValue] = useState('');
+
+  async function fetchData(filter?: string) {
+    const data = await DeliveryRepository.findAll(filter);
+    setDeliveries(data);
+    setLoading(false);
+  }
 
   useEffect(() => {
-    async function fetchData() {
-      const data = await DeliveryRepository.findAll();
-      setDeliveries(data);
-      setLoading(false);
-    }
-
     fetchData();
   }, []);
+
+  function handleChange({ target }) {
+    fetchData(target.value);
+    setValue(target.value);
+  }
 
   return (
     <Container loading={String(loading)}>
@@ -28,8 +34,13 @@ export default function Delivery() {
         <AiOutlineLoading size={35} color="#7D40E7" />
       ) : (
         <>
-          <TableHeader title="encomendas" />
-          <Table data={deliveries} />
+          <TableHeader
+            title="encomendas"
+            path="/delivery"
+            value={value}
+            handleChange={handleChange}
+          />
+          <Table data={deliveries} reload={fetchData} />
         </>
       )}
     </Container>

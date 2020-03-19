@@ -6,6 +6,13 @@ import Menu from 'components/Menu';
 import ViewButton from 'components/ViewButton';
 import EditButton from 'components/EditButton';
 import DeleteButton from 'components/DeleteButton';
+import ConfirmAlert from 'components/ConfirmAlert';
+import { confirmAlert } from 'react-confirm-alert';
+
+import history from 'services/history';
+import api from 'services/api';
+
+import { toast } from 'react-toastify';
 
 import Modal from '../../View';
 
@@ -13,9 +20,10 @@ import { Container, DeliveryManInfo, DeliveryStatus } from './styles';
 
 interface IProps {
   delivery: IDelivery;
+  reload: () => void;
 }
 
-function ListItem({ delivery }: IProps) {
+function ListItem({ delivery, reload }: IProps) {
   const [isModalOpen, setModalOpen] = useState(false);
 
   function handleOpenModal() {
@@ -24,6 +32,28 @@ function ListItem({ delivery }: IProps) {
 
   function handleCloseModal() {
     setModalOpen(false);
+  }
+
+  function handleEdit() {
+    return history.push(`/delivery/${delivery.id}`);
+  }
+
+  async function handleConfirm() {
+    try {
+      await api.delete(`/delivery/${delivery.id}`);
+      toast.success('Encomenda deletada com sucesso!');
+      reload();
+    } catch (e) {
+      toast.error('Algo de errado aconteceu! Tente novamente');
+    }
+  }
+
+  function handleDelete() {
+    confirmAlert({
+      customUI: ({ onClose }) => (
+        <ConfirmAlert onClose={onClose} onConfirm={handleConfirm} />
+      ),
+    });
   }
 
   return (
@@ -62,10 +92,10 @@ function ListItem({ delivery }: IProps) {
               <ViewButton onClick={handleOpenModal} />
             </li>
             <li>
-              <EditButton />
+              <EditButton onClick={handleEdit} />
             </li>
             <li>
-              <DeleteButton />
+              <DeleteButton onClick={handleDelete} />
             </li>
           </Menu>
         </td>

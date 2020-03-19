@@ -12,7 +12,7 @@ const menu = [
   },
   {
     title: 'Entregadores',
-    path: '/deliveryman',
+    path: '/deliverymans',
   },
   {
     title: 'Destinatários',
@@ -34,7 +34,7 @@ export default function Header() {
       </LogoContainer>
 
       <MenuList>
-        {menu.map((m) => (
+        {menu.map(m => (
           <li key={m.title}>
             <Link to={m.path}>{m.title}</Link>
           </li>
