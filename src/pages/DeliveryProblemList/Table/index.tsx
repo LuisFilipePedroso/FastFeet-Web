@@ -1,4 +1,4 @@
-import React, { useMemo, memo } from 'react';
+import React, { memo } from 'react';
 
 import IDeliveryProblem from 'interfaces/DeliveryProblem';
 
@@ -25,7 +25,7 @@ function Table({ data, reload }: IProps) {
           </tr>
         </thead>
         <tbody>
-          {data.map(deliveryProblem => (
+          {data.map((deliveryProblem) => (
             <ListItem
               key={deliveryProblem.id}
               deliveryProblem={deliveryProblem}

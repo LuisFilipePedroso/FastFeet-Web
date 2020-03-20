@@ -1,4 +1,4 @@
-import React, { memo, useMemo } from 'react';
+import React, { memo } from 'react';
 import IRecipient from 'interfaces/Recipient';
 
 import Menu from 'components/Menu';
@@ -9,7 +9,6 @@ import { confirmAlert } from 'react-confirm-alert';
 import RecipientRepository from 'repositories/Recipient';
 
 import history from 'services/history';
-import api from 'services/api';
 
 import { toast } from 'react-toastify';
 import { Container } from './styles';

@@ -4,12 +4,9 @@ import IDeliveryProblem from 'interfaces/DeliveryProblem';
 
 import Menu from 'components/Menu';
 import ViewButton from 'components/ViewButton';
-import EditButton from 'components/EditButton';
 import DeleteButton from 'components/DeleteButton';
 import ConfirmAlert from 'components/ConfirmAlert';
 import { confirmAlert } from 'react-confirm-alert';
-
-import history from 'services/history';
 
 import { toast } from 'react-toastify';
 import DeliveryProblemRepository from 'repositories/DeliverProblem';
@@ -31,7 +28,7 @@ function ListItem({ deliveryProblem, reload }: IProps) {
       ...deliveryProblem,
       shortDescription: deliveryProblem.description.substr(0, 74),
     }),
-    [deliveryProblem],
+    [deliveryProblem]
   );
 
   function handleOpenModal() {

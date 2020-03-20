@@ -11,7 +11,7 @@ export const TableHeader = styled('th')<{ width: number }>`
   width: ${(props) => `${props.width}px`};
   height: 50px;
   font-size: 16px;
-  color: #444444;
+  color: ${(props) => props.theme.colors.textPrimary};
   text-align: left;
   padding: 0 25px;
 `;

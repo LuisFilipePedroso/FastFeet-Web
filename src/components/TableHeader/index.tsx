@@ -1,4 +1,5 @@
-import React, { memo } from 'react';
+import React, { memo, useContext } from 'react';
+import { ThemeContext } from 'styled-components';
 
 import { MdSearch, MdAdd } from 'react-icons/md';
 import { DebounceInput } from 'react-debounce-input';
@@ -22,6 +23,7 @@ function TableHeader({
   addButton = true,
 }: IProps) {
   const splitTitle = title.split(' ');
+  const { colors } = useContext(ThemeContext);
 
   return (
     <Container>
@@ -43,7 +45,7 @@ function TableHeader({
 
         {addButton && (
           <Button to={path} type="button">
-            <MdAdd color="#fff" size={22} />
+            <MdAdd color={colors.secondary} size={22} />
             Cadastrar
           </Button>
         )}

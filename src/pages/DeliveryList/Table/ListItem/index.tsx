@@ -7,17 +7,17 @@ import ViewButton from 'components/ViewButton';
 import EditButton from 'components/EditButton';
 import DeleteButton from 'components/DeleteButton';
 import ConfirmAlert from 'components/ConfirmAlert';
+import DeliveryStatus from 'components/DeliveryStatus';
 import { confirmAlert } from 'react-confirm-alert';
 
 import history from 'services/history';
-import api from 'services/api';
 
 import { toast } from 'react-toastify';
 import DeliveryRepository from 'repositories/Delivery';
 
 import Modal from '../../View';
 
-import { Container, DeliveryManInfo, DeliveryStatus } from './styles';
+import { Container, DeliveryManInfo } from './styles';
 
 interface IProps {
   delivery: IDelivery;

@@ -26,6 +26,7 @@
   ],
   "files": [
     "node_modules/@types/react/index.d.ts",
-    "src/@types/index.d.ts"
+    "src/@types/index.d.ts",
+    "src/@types/styled.d.ts",
   ]
 }

@@ -2,7 +2,7 @@ import styled from 'styled-components';
 
 export const Container = styled.div`
   > h4 {
-    color: #444444;
+    color: ${(props) => props.theme.colors.textPrimary};
     font-size: 14px;
     margin-bottom: 4px;
   }
@@ -14,7 +14,7 @@ export const Grid = styled.div`
   border-bottom: 1px solid #eeeeee;
 
   p {
-    color: #666666;
+    color: ${(props) => props.theme.colors.textMedium};
     font-size: 16px;
     margin-bottom: 12px;
 

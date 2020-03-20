@@ -6,7 +6,7 @@ export const Container = styled.div`
   margin-top: 34px;
 
   > h3 {
-    color: #444444;
+    color: ${props => props.theme.colors.textPrimary};
     font-size: 22px;
     font-weight: bold;
   }
@@ -24,10 +24,10 @@ export const Button = styled(Link)`
   justify-content: center;
   width: 142px;
   height: 36px;
-  background-color: #7d40e7;
+  background-color: ${props => props.theme.colors.primary};
   border-radius: 4px;
   border: none;
-  color: #fff;
+  color: ${props => props.theme.colors.secondary};
   text-transform: uppercase;
   font-weight: bold;
   font-size: 14px;
@@ -56,9 +56,9 @@ export const InputWrapper = styled.div`
     padding: 10px;
     outline: none;
     border-radius: 4px;
-    border: 1px solid #dddddd;
+    border: 1px solid ${(props) => props.theme.colors.primaryColor};
     font-size: 14px;
-    color: #999999;
+    color: ${(props) => props.theme.colors.textSecondary};
     font-weight: 500;
     padding-left: 46px;
   }

@@ -1,4 +1,11 @@
 import React from 'react';
+import usePersistedState from 'hooks/usePersistedState';
+import { ThemeProvider, DefaultTheme } from 'styled-components';
+import light from 'styles/themes/light';
+import dark from 'styles/themes/dark';
+
+import { ThemeProvider as LocalThemeProvider } from 'context/Theme';
+
 import { ToastContainer } from 'react-toastify';
 import { PersistGate } from 'redux-persist/integration/react';
 import { Provider } from 'react-redux';
@@ -15,13 +22,23 @@ import { store, persistor } from 'store';
 import Routes from 'routes';
 
 export default function App() {
+  const [theme, setTheme] = usePersistedState<DefaultTheme>('theme', light);
+
+  function toggleTheme() {
+    setTheme(theme.title === 'light' ? dark : light);
+  }
+
   return (
     <Provider store={store}>
       <PersistGate persistor={persistor}>
         <Router history={history}>
-          <Routes />
-          <GlobalStyle />
-          <ToastContainer autoClose={3000} />
+          <ThemeProvider theme={theme}>
+            <LocalThemeProvider toggleTheme={toggleTheme}>
+              <Routes />
+              <GlobalStyle />
+              <ToastContainer autoClose={3000} />
+            </LocalThemeProvider>
+          </ThemeProvider>
         </Router>
       </PersistGate>
     </Provider>

@@ -3,11 +3,11 @@ import { Link } from 'react-router-dom';
 
 export const Container = styled.div`
   display: grid;
-  grid-template-columns: 15% 75% 10%;
+  grid-template-columns: 15% 66% 15% 5%;
   height: 64px;
   padding: 0 15px;
-  background-color: #ffffff;
-  border: 1px solid #dddddd;
+  background-color: ${(props) => props.theme.colors.primaryBackground};
+  border: 1px solid ${(props) => props.theme.colors.primaryColor};
 `;
 
 export const LogoContainer = styled(Link)`
@@ -19,7 +19,7 @@ export const LogoContainer = styled(Link)`
   > div {
     width: 2px;
     height: 32px;
-    background-color: #dddd;
+    background-color: ${(props) => props.theme.colors.secondaryBackground};
   }
 
   > img {
@@ -35,7 +35,7 @@ export const MenuList = styled.ul`
     margin-left: 15px;
 
     a {
-      color: #999999;
+      color: ${props => props.theme.colors.textSecondary};
       text-transform: uppercase;
       font-size: 15px;
       font-weight: bold;
@@ -43,14 +43,17 @@ export const MenuList = styled.ul`
   }
 `;
 
-export const ProfileContainer = styled.div`
+export const ProfileContainer = styled('div')<{ title: string }>`
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
 
   > h4 {
-    color: #666666;
+    color: ${(props) =>
+      props.title === 'dark'
+        ? props.theme.colors.textSecondary
+        : props.theme.colors.textMedium};
     font-size: 14px;
   }
 
@@ -59,10 +62,15 @@ export const ProfileContainer = styled.div`
     background: none;
 
     p {
-      color: #de3b3b;
+      color: ${props => props.theme.colors.secondaryDanger};
       font-weight: 500;
       font-size: 14px;
       margin-top: 5px;
     }
   }
+`;
+
+export const SwitchWrapper = styled.div`
+  display: flex;
+  align-items: center;
 `;

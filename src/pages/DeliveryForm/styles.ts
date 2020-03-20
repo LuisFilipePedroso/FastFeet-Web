@@ -7,7 +7,7 @@ export const Container = styled.div`
 
   form {
     label {
-      color: #444444;
+      color: ${(props) => props.theme.colors.textPrimary};
       font-size: 14px;
       font-weight: bold;
       margin-bottom: 9px;
@@ -19,7 +19,7 @@ export const Container = styled.div`
       border: 1px solid #dddddd;
       border-radius: 4px;
       font-size: 16px;
-      color: #999999;
+      color: ${(props) => props.theme.colors.textSecondary};
       font-weight: 500;
       padding-left: 15px;
     }

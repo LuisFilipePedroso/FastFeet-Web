@@ -8,10 +8,10 @@ export const DeliveryTable = styled.table`
 `;
 
 export const TableHeader = styled('th')<{ width: number; textAlign?: string }>`
-  width: ${(props) => `${props.width}px`};
+  width: ${props => `${props.width}px`};
   height: 50px;
   font-size: 16px;
-  color: #444444;
-  text-align: ${(props) => (props.textAlign ? props.textAlign : 'left')};
+  color: ${props => props.theme.colors.textPrimary};
+  text-align: ${props => (props.textAlign ? props.textAlign : 'left')};
   padding: 0 25px;
 `;

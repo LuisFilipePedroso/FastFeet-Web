@@ -46,7 +46,8 @@ module.exports = {
     "react/jsx-props-no-spreading": "off",
     "object-curly-newline": "off",
     "class-methods-use-this": "off",
-    "@typescript-eslint/member-delimiter-style": "off"
+    "@typescript-eslint/member-delimiter-style": "off",
+    "no-confusing-arrow": "off"
   },
   settings: {
     'import/resolver': {

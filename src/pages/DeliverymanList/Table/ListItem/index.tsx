@@ -10,7 +10,6 @@ import { confirmAlert } from 'react-confirm-alert';
 import DeliveryManRepository from 'repositories/DeliveryMan';
 
 import history from 'services/history';
-import api from 'services/api';
 
 import { toast } from 'react-toastify';
 
