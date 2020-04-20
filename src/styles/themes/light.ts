@@ -25,5 +25,7 @@ export default {
     secondaryColor: '#CCCCCC',
 
     primaryBackgroundTable: '#fff',
+
+    primaryBackgroundArrow: '#0000000d',
   },
 };

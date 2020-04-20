@@ -1,4 +1,5 @@
-import React, { useState, useRef } from 'react';
+import React, { useState, useRef, useContext } from 'react';
+import { ThemeContext } from 'styled-components';
 
 import { MdMoreHoriz } from 'react-icons/md';
 import useClickOutside from 'hooks/useClickOutside';
@@ -11,6 +12,7 @@ interface IProps {
 export default function Menu({ children }: IProps) {
   const [open, setIsOpen] = useState(false);
   const menuRef = useRef();
+  const { colors } = useContext(ThemeContext);
 
   function handleOpenMenu() {
     setIsOpen(!open);
@@ -25,7 +27,7 @@ export default function Menu({ children }: IProps) {
   return (
     <Container>
       <button type="button" onClick={handleOpenMenu}>
-        <MdMoreHoriz size={22} />
+        <MdMoreHoriz size={22} color={colors.textMedium} />
       </button>
 
       <ActionMenu open={String(open)} ref={menuRef}>

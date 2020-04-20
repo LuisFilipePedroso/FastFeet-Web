@@ -18,14 +18,16 @@ export default {
     primaryBackground: '#333',
     secondaryBackground: '#222',
     textPrimary: '#fff',
-    textMedium: '#666666',
-    textSecondary: '#fff',
+    textMedium: '#DDDDDD',
+    textSecondary: '#999999',
 
     actionButtonLight: '#C6C6C6',
 
     primaryColor: shade(0.15, '#444444'),
     secondaryColor: '#CCCCCC',
 
-    primaryBackgroundTable: '#fffffff5',
+    primaryBackgroundTable: '#444444',
+
+    primaryBackgroundArrow: '#FFFFFF',
   },
 };

@@ -6,17 +6,17 @@ import ReactSelect, {
 import { useField } from '@unform/core';
 
 const customStyles = {
-  container: base => ({
+  container: (base) => ({
     ...base,
     height: '45px',
   }),
-  valueContainer: base => ({
+  valueContainer: (base) => ({
     ...base,
     height: '45px',
     color: '#999999',
     fontSize: '16px',
   }),
-  singleValue: base => ({
+  singleValue: (base) => ({
     ...base,
     color: '#999999',
     top: '60%',
@@ -26,7 +26,7 @@ const customStyles = {
     color: '#999999',
     fontSize: '16px',
   }),
-  control: (base) => ({
+  control: base => ({
     ...base,
     height: '45px',
     marginTop: '9px',
@@ -44,7 +44,7 @@ const Select: React.FC<Props> = ({ name, label, options, ...rest }) => {
   const [selected, setSelected] = useState();
 
   useEffect(() => {
-    setSelected(options?.find(option => option.value === defaultValue));
+    setSelected(options?.find((option) => option.value === defaultValue));
   }, [defaultValue, options]);
 
   useEffect(() => {
@@ -72,7 +72,7 @@ const Select: React.FC<Props> = ({ name, label, options, ...rest }) => {
       {label && <label htmlFor={fieldName}>{label}</label>}
       <ReactSelect
         value={selected}
-        onChange={(e) => setSelected(e)}
+        onChange={e => setSelected(e)}
         ref={selectRef}
         classNamePrefix="react-select"
         options={options}

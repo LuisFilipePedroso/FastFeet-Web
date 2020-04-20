@@ -8,7 +8,7 @@ export const Container = styled.div`
 
   h2 {
     font-size: 24px;
-    color: #444444;
+    color: ${(props) => props.theme.colors.textPrimary};
   }
 `;
 
@@ -40,5 +40,6 @@ export const BackButton = styled.button`
 export const SubmitButton = styled(BackButton).attrs({
   type: 'submit',
 })`
-  background-color: #7d40e7;
+  background-color: ${props => props.theme.colors.primary};
+  color: ${props => props.theme.colors.secondary};
 `;

@@ -4,8 +4,7 @@ interface IParams {
   canceledAt: Date;
 }
 
-export default function({ startDate, endDate, canceledAt }: IParams) {
-  console.log(canceledAt);
+export default function ({ startDate, endDate, canceledAt }: IParams) {
   if (startDate !== null && endDate !== null) {
     return {
       title: 'Entregue',

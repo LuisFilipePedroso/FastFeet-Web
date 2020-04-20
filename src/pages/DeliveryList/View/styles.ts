@@ -14,7 +14,7 @@ export const Grid = styled.div`
   border-bottom: 1px solid #eeeeee;
 
   p {
-    color: ${(props) => props.theme.colors.textMedium};
+    color: ${(props) => props.theme.colors.textPrimary};
     font-size: 16px;
     margin-bottom: 12px;
 
@@ -27,4 +27,8 @@ export const Grid = styled.div`
 export const ImageWrapper = styled.div`
   display: flex;
   justify-content: center;
+
+  img {
+    mix-blend-mode: multiply;
+  }
 `;

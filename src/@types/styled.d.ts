@@ -28,6 +28,8 @@ declare module 'styled-components' {
       secondaryColor: string;
 
       primaryBackgroundTable: string;
+
+      primaryBackgroundArrow: string;
     };
   }
 }

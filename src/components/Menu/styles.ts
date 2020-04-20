@@ -12,7 +12,7 @@ export const Container = styled.div`
 `;
 
 export const ActionMenu = styled('ul')<{ open: string }>`
-  display: ${props => (props.open === 'true' ? 'flex' : 'none')};
+  display: ${(props) => (props.open === 'true' ? 'flex' : 'none')};
 
   li {
     & + li {
@@ -22,8 +22,9 @@ export const ActionMenu = styled('ul')<{ open: string }>`
     }
   }
 
-  ${props => props.open === 'true'
-    && css`
+  ${(props) =>
+    props.open === 'true' &&
+    css`
       min-width: 120px;
       flex-direction: column;
       background-color: #fff;
@@ -41,7 +42,8 @@ export const ActionMenu = styled('ul')<{ open: string }>`
         width: 0;
         border-left: 7px solid transparent;
         border-right: 7px solid transparent;
-        border-bottom: 10px solid #0000000d;
+        border-bottom: 10px solid
+          ${(props) => props.theme.colors.primaryBackgroundArrow};
       }
     `}
 `;
